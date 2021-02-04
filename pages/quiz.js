@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import db from '../db.json';
 import { motion } from 'framer-motion';
 import Widget from '../src/components/Widget';
@@ -194,6 +195,9 @@ export default function QuizPage() {
 
   return (
     <QuizBackground backgroundImage={db.bg}>
+      <Head>
+        <title>Questions - Superman</title>
+      </Head>
       <QuizContainer>
         <QuizLogo />
 
