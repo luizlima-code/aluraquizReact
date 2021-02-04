@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
@@ -20,11 +21,20 @@ export default function Home() {
   return (
     <QuizBackground backgroundImage={db.bg}>
       <Head>
-        <title>AluraQuiz - Modelo Base</title>
+        <title>Quiz - Superman</title>
       </Head>
       <QuizContainer>
         <QuizLogo />
-        <Widget>
+        <Widget
+          as={motion.section}
+          transition={{ delay: 0, duration: 3 }}
+          variants={{ 
+            show: {opacity:1,y: '0'},
+            hidden: { opacity: 0, y: '200%'},
+          }}
+          initial="hidden"
+          animate="show"
+        >
           <Widget.Header>
             <h1>The legend of zelda</h1>
           </Widget.Header>
@@ -48,14 +58,50 @@ export default function Home() {
           </Widget.Content>
         </Widget>
 
-        <Widget>
+        <Widget
+          as={motion.section}
+          transition={{ delay: 0.5, duration: 2.5 }}
+          variants={{ 
+            show: {opacity:1, y: '0'},
+            hidden: { opacity: 0, y:'140%'},
+          }}
+          initial="hidden"
+          animate="show"
+        >
           <Widget.Content>
-            <h1>Quizes da Galera</h1>
+            <h1>Regras</h1>
 
-            <p>lorem ipsum dolor sit amet...</p>
+            <p>Cada acerto vale um ponto</p>
+            <p>São um total de 10 questões</p>
+            <p>Somente uma questão é a certa.</p>
           </Widget.Content>
         </Widget>
-        <Footer />
+        <Widget
+          as={motion.section}
+          transition={{ delay: 1, duration: 2.0 }}
+          variants={{ 
+            show: {opacity:1, y: '0'},
+            hidden: { opacity: 0, y:'120%'},
+          }}
+          initial="hidden"
+          animate="show"
+        >
+          <Widget.Content>
+            <h2>Leia atentamente</h2>
+
+            <p>Caso a opção selecionada não habilite o botao para passar, selecione outra alternativa e retorne para a alternativa desejada.</p>
+          </Widget.Content>
+        </Widget>
+        <Footer 
+          as={motion.footer}
+          transition={{ delay: 1.5,duration: 1.5 }}
+          variants={{ 
+            show: {opacity:1, y: '0'},
+            hidden: { opacity: 0, y: '100%'},
+          }}
+          initial="hidden"
+          animate="show"
+        />
       </QuizContainer>
       <GitHubCorner projectUrl="https://github.com/luizlima-code" />
     </QuizBackground>
